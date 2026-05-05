@@ -18,6 +18,24 @@ struct Node* newNode(int val) {
     return node;
 }
 
+struct Node* sortedArrayToBST(int A[], int start, int end) {
+    // 終止條件：當起始索引大於結束索引時
+    if (start > end) {
+        return NULL;
+    }
+
+    // 取得中間索引，建立為根節點
+    int mid = start + (end - start) / 2;
+    struct Node* root = newNode(A[mid]);
+
+    // 遞迴建立左子樹（使用中間值左邊的資料）
+    root->left = sortedArrayToBST(A, start, mid - 1);
+
+    // 遞迴建立右子樹（使用中間值右邊的資料）
+    root->right = sortedArrayToBST(A, mid + 1, end);
+
+    return root;
+}
 
 int main() {
     int A[] = {1, 3, 9, 12, 24, 25, 34, 55, 76, 77, 79, 92, 93, 95, 99};
