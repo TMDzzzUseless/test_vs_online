@@ -1,11 +1,23 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+// 1. 先定義結構體
+struct Node {
+    int data;
+    struct Node* left;  // 這裡可以寫，因為指標的大小是固定的
+    struct Node* right;
+};
+
+// 2. 再定義使用該結構體的函式
 // 中序遍歷印出樹（驗證用）
-void printInorder(struct Node* node) {
-    if (node == NULL) return;
-    printInorder(node->left);
-    printf("%d ", node->data);
-    printInorder(node->right);
+struct Node* newNode(int val) {
+    struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+    node->data = val;
+    node->left = NULL;
+    node->right = NULL;
+    return node;
 }
+
 
 int main() {
     int A[] = {1, 3, 9, 12, 24, 25, 34, 55, 76, 77, 79, 92, 93, 95, 99};
