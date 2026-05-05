@@ -37,6 +37,14 @@ struct Node* sortedArrayToBST(int A[], int start, int end) {
     return root;
 }
 
+// 中序遍歷印出樹（驗證用）
+void printInorder(struct Node* node) {
+    if (node == NULL) return;
+    printInorder(node->left);
+    printf("%d ", node->data);
+    printInorder(node->right);
+}
+
 int main() {
     int A[] = {1, 3, 9, 12, 24, 25, 34, 55, 76, 77, 79, 92, 93, 95, 99};
     int n = sizeof(A) / sizeof(A[0]);
